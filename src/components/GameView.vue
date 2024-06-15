@@ -2,12 +2,29 @@
 import ResultCard from '@/components/ResultCard.vue'
 import ReasoningBoard from './ReasoningBoard.vue'
 import InputPanel from './InputPanel.vue'
-import { ref } from 'vue'
+import { ref, reactive, nextTick } from 'vue'
 
 const result = ref('')
-
-function decideInputNumbers(inputNumbers) {
-  result.value = inputNumbers.join('')
+let index = ref(-1)
+const reasoningArr = reactive([
+  { index: 0, reasoning: 'watting', hit: 0, blow: 0 },
+  { index: 1, reasoning: 'watting', hit: 0, blow: 0 },
+  { index: 2, reasoning: 'watting', hit: 0, blow: 0 },
+  { index: 3, reasoning: 'watting', hit: 0, blow: 0 },
+  { index: 4, reasoning: 'watting', hit: 0, blow: 0 },
+  { index: 5, reasoning: 'watting', hit: 0, blow: 0 },
+  { index: 6, reasoning: 'watting', hit: 0, blow: 0 },
+  { index: 7, reasoning: 'watting', hit: 0, blow: 0 },
+  { index: 8, reasoning: 'watting', hit: 0, blow: 0 }
+])
+async function decideInputNumbers(inputNumbers) {
+  if (result.value === '') {
+    result.value = inputNumbers.join('')
+  } else {
+    index.value++
+    reasoningArr[index.value].reasoning = inputNumbers.join('')
+    await nextTick()
+  }
 }
 </script>
 
@@ -18,7 +35,11 @@ function decideInputNumbers(inputNumbers) {
       <ResultCard></ResultCard>
     </div>
     <div id="body">
-      <ReasoningBoard></ReasoningBoard>
+      <ReasoningBoard
+        :result="result"
+        :index="index"
+        :reasoningArr="reasoningArr"
+      ></ReasoningBoard>
       <ReasoningBoard></ReasoningBoard>
     </div>
     <div id="footer">

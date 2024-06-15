@@ -1,13 +1,13 @@
 <script setup>
 import { ref } from 'vue'
 const time = 90
+const numbers = [...Array(10).keys()]
 const isSelectedDone = ref(false)
 const inputNumbers = ref([-1, -1, -1, -1])
-const Numbers = ref(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'])
 const emit = defineEmits(['decideInputNumbers'])
 
 function changeInputNumbers(num) {
-  if (!this.isSelectedDone) {
+  if (!this.isSelectedDone.value) {
     let index = inputNumbers.value.indexOf(-1)
     inputNumbers.value[index] = num
     if (index === 3) isSelectedDone.value = true
@@ -21,6 +21,8 @@ function deleteInputNumbers() {
 }
 function decideInputNumbers() {
   emit('decideInputNumbers', inputNumbers.value)
+  inputNumbers.value = [-1, -1, -1, -1]
+  isSelectedDone.value = false
 }
 function isNumPicked(num) {
   return inputNumbers.value.indexOf(num) !== -1
@@ -33,7 +35,7 @@ function isNumPicked(num) {
     <div class="input-num">
       <p>"あなたの数字を決めてください"</p>
       <ul class="flex-container">
-        <li v-for="num in inputNumbers" :key="num">
+        <li v-for="(num, index) in inputNumbers" :key="index">
           <p v-if="num !== -1">{{ num }}</p>
           <p v-else>?</p>
         </li>
@@ -41,7 +43,7 @@ function isNumPicked(num) {
     </div>
     <div class="select-num flex-box">
       <button
-        v-for="num in Numbers"
+        v-for="num in numbers"
         :disabled="isNumPicked(num)"
         :key="num"
         class="m-1"

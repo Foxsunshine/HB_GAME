@@ -1,18 +1,15 @@
 <script setup>
-import { ref } from 'vue'
-let index = 0
-const reasoningArr = ref([
-  { index: index++, reasoning: '5432', hit: '2', blow: '2' },
-  { index: index++, reasoning: '5432', hit: '2', blow: '2' },
-  { index: index++, reasoning: '5432', hit: '2', blow: '2' },
-  { index: index++, reasoning: '5432', hit: '2', blow: '2' },
-  { index: index++, reasoning: '5432', hit: '2', blow: '2' },
-  { index: index++, reasoning: '5432', hit: '2', blow: '2' },
-  { index: index++, reasoning: '5432', hit: '2', blow: '2' },
-  { index: index++, reasoning: '5432', hit: '2', blow: '2' },
-  { index: index++, reasoning: '5432', hit: '2', blow: '2' },
-  { index: index++, reasoning: '5432', hit: '2', blow: '2' }
-])
+defineProps({
+  result: {
+    type: String
+  },
+  reasoningArr: {
+    type: Array
+  },
+  index: {
+    type: Number
+  }
+})
 </script>
 
 <template>
@@ -27,9 +24,16 @@ const reasoningArr = ref([
       </thead>
       <tbody>
         <tr v-for="reasoning in reasoningArr" :key="reasoning.index">
-          <td>{{ reasoning.reasoning }}</td>
-          <td>{{ reasoning.hit }}</td>
-          <td>{{ reasoning.blow }}</td>
+          <div v-if="reasoning.index <= index" class="flex-container">
+            <th>{{ reasoning.reasoning }}</th>
+            <th>{{ reasoning.hit }}</th>
+            <th>{{ reasoning.blow }}</th>
+          </div>
+          <div v-else>
+            <th></th>
+            <th></th>
+            <th></th>
+          </div>
         </tr>
       </tbody>
     </table>
