@@ -1,12 +1,12 @@
 <script setup>
 defineProps({
-  result: {
+  resultA: {
     type: String
   },
   reasoningArr: {
     type: Array
   },
-  index: {
+  count: {
     type: Number
   }
 })
@@ -24,7 +24,7 @@ defineProps({
       </thead>
       <tbody>
         <tr v-for="reasoning in reasoningArr" :key="reasoning.index">
-          <div v-if="reasoning.index <= index" class="flex-container">
+          <div v-if="reasoning.index <= count" class="flex-container">
             <th>{{ reasoning.reasoning }}</th>
             <th>{{ reasoning.hit }}</th>
             <th>{{ reasoning.blow }}</th>

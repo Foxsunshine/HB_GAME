@@ -11,7 +11,6 @@ defineProps({
   <div class="result-card">
     <div>
       <p class="name">"JiangCheng"</p>
-      <p class="score">1500</p>
       <div class="num-card">
         <h1 class="num">{{ result }}</h1>
       </div>
