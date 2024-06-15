@@ -1,8 +1,8 @@
 <script setup>
 defineProps({
-  msg: {
+  result: {
     type: String,
-    required: true
+    required: false
   }
 })
 </script>
@@ -13,10 +13,7 @@ defineProps({
       <p class="name">"JiangCheng"</p>
       <p class="score">1500</p>
       <div class="num-card">
-        <h1 class="num">1</h1>
-        <h1 class="num">2</h1>
-        <h1 class="num">3</h1>
-        <h1 class="num">4</h1>
+        <h1 class="num">{{ result }}</h1>
       </div>
     </div>
   </div>

@@ -2,18 +2,19 @@
 import ResultCard from '@/components/ResultCard.vue'
 import ReasoningBoard from './ReasoningBoard.vue'
 import InputPanel from './InputPanel.vue'
-defineProps({
-  msg: {
-    type: String,
-    required: true
-  }
-})
+import { ref } from 'vue'
+
+const result = ref('')
+
+function decideInputNumbers(inputNumbers) {
+  result.value = inputNumbers.join('')
+}
 </script>
 
 <template>
   <div class="gameBox">
     <div id="header">
-      <ResultCard></ResultCard>
+      <ResultCard :result="result"></ResultCard>
       <ResultCard></ResultCard>
     </div>
     <div id="body">
@@ -21,7 +22,7 @@ defineProps({
       <ReasoningBoard></ReasoningBoard>
     </div>
     <div id="footer">
-      <InputPanel></InputPanel>
+      <InputPanel @decideInputNumbers="decideInputNumbers"></InputPanel>
     </div>
   </div>
 </template>

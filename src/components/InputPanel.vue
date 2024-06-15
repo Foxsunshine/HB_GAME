@@ -1,37 +1,53 @@
 <script setup>
 import { ref } from 'vue'
 const time = 90
-// const inputNums = ref(['0', '0', '2', '3'])
-const selectedNum = ref('----')
 const isNumDecided = ref(false)
-const isDecideButtonShow = ref(false)
-const nums = ref(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'])
+const inputNumbers = ref([-1, -1, -1, -1])
+const Numbers = ref(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'])
+const emit = defineEmits(['decideInputNumbers'])
 
-function changeSelectedNum(num) {
-  let index = selectedNum.value.indexOf('-')
-  console.log(index)
-  if (index !== -1) selectedNum.value = selectedNum.value.replace('-', num)
-  if (index === 3) isDecideButtonShow.value = true
-  console.log(selectedNum.value)
+function changeInputNumbers(num) {
+  if (!this.isNumDecided) {
+    let index = inputNumbers.value.indexOf(-1)
+    inputNumbers.value[index] = num
+    if (index === 3) isNumDecided.value = true
+  }
 }
-function decideSelectedNum() {
-  isNumDecided.value = true
+function deleteInputNumbers() {
+  isNumDecided.value = false
+  let index = inputNumbers.value.indexOf(-1)
+  if (index === -1) inputNumbers.value[3] = -1
+  else inputNumbers.value[index - 1] = -1
+}
+function decideInputNumbers() {
+  emit('decideInputNumbers', inputNumbers.value)
 }
 </script>
 
 <template>
   <div class="input-panel">
     <div class="time">{{ time }}</div>
-    <div class="intput-num">
+    <div class="input-num">
       <p>"あなたの数字を決めてください"</p>
-      <h1 v-if="isNumDecided" class="m-1">{{ selectedNum }}</h1>
-      <h1 v-else class="m-1">{{ selectedNum }}</h1>
+      <ul>
+        <li v-for="num in inputNumbers" :key="num">
+          <p v-if="num !== -1">{{ num }}</p>
+          <p v-else>?</p>
+        </li>
+      </ul>
     </div>
     <div class="select-num flex-box">
-      <h1 v-for="num in nums" :key="num" class="m-1" @click="changeSelectedNum(num)">{{ num }}</h1>
+      <h1
+        v-for="num in Numbers"
+        :key="num"
+        class="m-1"
+        @click="changeInputNumbers(num)"
+      >
+        {{ num }}
+      </h1>
     </div>
-    <button v-show="isDecideButtonShow" @click="decideSelectedNum">決定</button>
-    <button @click="decideSelectedNum">delete</button>
+    <button v-show="isNumDecided" @click="decideInputNumbers">決定</button>
+    <button @click="deleteInputNumbers">delete</button>
   </div>
 </template>
 <style scoped>
