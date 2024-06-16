@@ -9,26 +9,46 @@ defineProps({
 
 <template>
   <div class="result-card">
-    <div>
-      <p class="name">"JiangCheng"</p>
-      <div class="num-card">
-        <h1 class="num">{{ result }}</h1>
-      </div>
+    <div class="container">
+      <p id="icon" class="flex-container">🤡</p>
+      <p class="name">ジャンチェン</p>
     </div>
+    <p id="num-card" class="flex-container">{{ result }}</p>
   </div>
 </template>
 
 <style scoped>
+p {
+  margin: 0;
+}
+
+#icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  text-align: center;
+  background-color: var(--vt-c-white);
+}
+.name {
+  font-size: 12px;
+  font-weight: bold;
+  color: var(--vt-c-brown-dark);
+  padding-left: 0.5rem;
+}
 .result-card {
-  background-color: white;
-  color: black;
   width: 48%;
-  margin: 0.5rem;
+  margin-bottom: 10px;
 }
-.num-card {
-  display: flex;
-}
-.num {
-  margin: 1rem;
+#num-card {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  padding-left: 10px;
+  letter-spacing: 10px;
+  color: var(--vt-c-brown-dark);
+  width: 130px;
+  height: 40px;
+  border-radius: 8px;
+  background-color: var(--vt-c-white);
 }
 </style>

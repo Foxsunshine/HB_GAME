@@ -1,10 +1,12 @@
 <script setup>
-import ResultCard from '@/components/ResultCard.vue'
-import ReasoningBoard from './ReasoningBoard.vue'
+import ResultCardA from '@/components/ResultCard.vue'
+import ResultCardB from '@/components/ResultCard.vue'
+import ReasoningBoardA from './ReasoningBoard.vue'
+import ReasoningBoardB from './ReasoningBoard.vue'
 import InputPanel from './InputPanel.vue'
 import { ref, reactive, onMounted } from 'vue'
 
-const resultA = ref('')
+const resultA = ref('1234')
 const resultB = ref('')
 let count = ref(-1)
 const reasoningArr = reactive([
@@ -57,17 +59,20 @@ async function decideInputNumbers(inputNumbers) {
 
 <template>
   <div class="gameBox">
-    <div id="header">
-      <ResultCard :resultA="resultA"></ResultCard>
-      <ResultCard></ResultCard>
+    <div id="nav" class="container">
+      <h1 id="title">YOUR TURN</h1>
+    </div>
+    <div id="header" class="flex-container">
+      <ResultCardA :result="resultA"></ResultCardA>
+      <ResultCardB></ResultCardB>
     </div>
     <div id="body">
-      <ReasoningBoard
+      <ReasoningBoardA
         :resultB="resultB"
         :count="count"
         :reasoningArr="reasoningArr"
-      ></ReasoningBoard>
-      <ReasoningBoard></ReasoningBoard>
+      ></ReasoningBoardA>
+      <ReasoningBoardB></ReasoningBoardB>
     </div>
     <div id="footer">
       <InputPanel @decideInputNumbers="decideInputNumbers"></InputPanel>
@@ -76,12 +81,17 @@ async function decideInputNumbers(inputNumbers) {
 </template>
 
 <style scoped>
-#header,
+/* #header,
 #body,
 #footer {
   display: flex;
+} */
+#title {
+  color: var(--vt-c-brown-medium);
+  font-size: 25px;
+  font-weight: bold;
 }
-h1 {
+/* h1 {
   font-weight: 500;
   font-size: 2.6rem;
   position: relative;
@@ -90,17 +100,17 @@ h1 {
 
 h3 {
   font-size: 1.2rem;
-}
+} */
 
-.gameBox h1,
+/* .gameBox h1,
 .gameBox h3 {
   text-align: center;
-}
+} */
 
-@media (min-width: 1024px) {
+/* @media (min-width: 1024px) {
   .gameBox h1,
   .gameBox h3 {
     text-align: left;
   }
-}
+} */
 </style>

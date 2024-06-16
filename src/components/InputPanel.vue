@@ -62,7 +62,7 @@ function isNumPicked(num) {
 .input-panel {
   text-align: center;
   align-items: center;
-  margin: auto;
+  /* margin: auto; */
 }
 .flex-box {
   display: flex;

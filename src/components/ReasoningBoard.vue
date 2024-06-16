@@ -45,7 +45,6 @@ defineProps({
   background-color: white;
   color: black;
   width: 48%;
-  margin: 0.5rem;
 }
 .num-card {
   display: flex;
