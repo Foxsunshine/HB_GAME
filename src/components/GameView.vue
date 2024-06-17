@@ -66,7 +66,7 @@ async function decideInputNumbers(inputNumbers) {
       <ResultCardA :result="resultA"></ResultCardA>
       <ResultCardB></ResultCardB>
     </div>
-    <div id="body">
+    <div id="body" class="flex-container">
       <ReasoningBoardA
         :resultB="resultB"
         :count="count"
@@ -81,31 +81,17 @@ async function decideInputNumbers(inputNumbers) {
 </template>
 
 <style scoped>
-/* #header,
-#body,
 #footer {
   display: flex;
-} */
+}
 #title {
   color: var(--vt-c-brown-medium);
   font-size: 25px;
   font-weight: bold;
 }
-/* h1 {
-  font-weight: 500;
-  font-size: 2.6rem;
-  position: relative;
-  top: -10px;
+#nav {
+  margin: 10px;
 }
-
-h3 {
-  font-size: 1.2rem;
-} */
-
-/* .gameBox h1,
-.gameBox h3 {
-  text-align: center;
-} */
 
 /* @media (min-width: 1024px) {
   .gameBox h1,

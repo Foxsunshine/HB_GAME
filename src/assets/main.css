@@ -13,6 +13,13 @@ p {
 li {
   list-style-type: none;
 }
+
+button {
+  all: unset; /* 移除所有默认样式 */
+  display: inline-block; /* 保持按钮的块级显示特性 */
+  cursor: pointer; /* 鼠标移到按钮上时显示指针 */
+}
+
 .container {
   margin-bottom: 10px;
   padding: 0;
@@ -26,6 +33,10 @@ li {
   display: flex; /* 使用Flexbox布局 */
   justify-content: center; /* 水平居中对齐 */
   align-items: center; /* 垂直居中对齐 */
+}
+.board-text {
+  font-size: 12px;
+  font-weight: bold;
 }
 /* @media (hover: hover) {
   a:hover {
