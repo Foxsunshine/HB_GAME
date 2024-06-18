@@ -34,15 +34,15 @@ defineProps({
         >
           {{ reasoning.reasoning }}
         </td>
-        <td v-else></td>
+        <td v-else class="board-text-num"></td>
         <td v-if="reasoning.index <= count" class="board-text-num">
           {{ reasoning.hit }}
         </td>
-        <td v-else></td>
+        <td v-else class="board-text-num"></td>
         <td v-if="reasoning.index <= count" class="board-text-num">
           {{ reasoning.blow }}
         </td>
-        <td v-else></td>
+        <td v-else class="board-text-num"></td>
       </tr>
     </tbody>
   </table>
@@ -92,6 +92,7 @@ td {
   text-align: center;
 }
 .board-text-num {
+  height: 46px;
   font-size: 14px;
   font-weight: bold;
   text-align: center;

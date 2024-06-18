@@ -36,7 +36,7 @@ function isNumPicked(num) {
         <ul id="input-container" class="container">
           <li v-for="(num, index) in inputNumbers" :key="index">
             <p v-if="num !== -1" class="input-num">{{ num }}</p>
-            <p v-else class="input-num">9</p>
+            <p v-else class="input-num">$</p>
           </li>
         </ul>
       </div>
