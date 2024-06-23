@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cheng.hb_game.domain.User;
+import com.cheng.hb_game.model.User;
 import com.cheng.hb_game.repository.UserRepository;
 
 @Service

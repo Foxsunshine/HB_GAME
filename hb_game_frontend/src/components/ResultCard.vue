@@ -1,10 +1,15 @@
 <script setup>
+import { getService } from '@/service/getService.js'
 defineProps({
   result: {
     type: String,
     required: false
   }
 })
+
+function getMovie() {
+  getService.getMovie().then((response) => console.log(response.data))
+}
 </script>
 
 <template>
@@ -13,7 +18,7 @@ defineProps({
       <p id="icon" class="flex-container">🤡</p>
       <p class="name">ジャンチェン</p>
     </div>
-    <p id="num-card" class="flex-container">{{ result }}</p>
+    <p id="num-card" class="flex-container" @click="getMovie">{{ result }}</p>
   </div>
 </template>
 

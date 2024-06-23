@@ -1,4 +1,4 @@
-package com.cheng.hb_game.domain;
+package com.cheng.hb_game.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
