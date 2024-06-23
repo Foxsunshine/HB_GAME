@@ -1,6 +1,5 @@
 <script setup>
 import { ref } from 'vue'
-import { postService } from '@/service/postService.js'
 const numbers = [...Array(10).keys()]
 const isSelectedDone = ref(false)
 const inputNumbers = ref([-1, -1, -1, -1])
@@ -26,11 +25,6 @@ function deleteInputNumbers() {
 // 决定数字
 function decideInputNumbers() {
   emit('decideInputNumbers', inputNumbers.value)
-  const data = {
-    createdBy: 'user1',
-    hitResultNum: inputNumbers.value.join('')
-  }
-  postService.postHitResult(data).then((response) => console.log(response.data))
   inputNumbers.value = [-1, -1, -1, -1]
   isSelectedDone.value = false
 }

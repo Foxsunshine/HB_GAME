@@ -4,9 +4,10 @@ import ResultCardB from '@/components/ResultCard.vue'
 import ReasoningBoardA from './ReasoningBoard.vue'
 import ReasoningBoardB from './ReasoningBoard.vue'
 import InputPanel from './InputPanel.vue'
+import { postService } from '@/service/postService.js'
 import { ref, reactive, onMounted } from 'vue'
 
-const resultA = ref('$$$$')
+const resultA = ref('👻👻👻👻')
 const resultB = ref('')
 let count = ref(-1)
 const reasoningArr = reactive([
@@ -40,6 +41,13 @@ async function decideInputNumbers(inputNumbers) {
   console.log(resultB.value)
   if (resultB.value === '') {
     resultB.value = inputNumbers.join('')
+    const data = {
+      createdBy: 'user1',
+      hitResultNum: inputNumbers.join('')
+    }
+    postService
+      .postHitResult(data)
+      .then((response) => console.log(response.data))
   } else {
     count.value++
     inputNumbers.forEach((element, index) => {
