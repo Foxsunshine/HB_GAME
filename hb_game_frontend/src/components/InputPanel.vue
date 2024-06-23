@@ -1,9 +1,32 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 const numbers = [...Array(10).keys()]
+const countDown = ref('01:30')
+let timeLeft = 90
+let countdownInterval
 const isSelectedDone = ref(false)
 const inputNumbers = ref([-1, -1, -1, -1])
 const emit = defineEmits(['decideInputNumbers'])
+
+// 在组件挂载时启动倒计时
+onMounted(() => {
+  updateCountdown() // 初始调用以显示初始时间
+  countdownInterval = setInterval(updateCountdown, 1000)
+})
+
+// 更新倒计时函数
+function updateCountdown() {
+  const minutes = Math.floor(timeLeft / 60)
+  const seconds = timeLeft % 60
+
+  countDown.value = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`
+
+  if (timeLeft > 0) {
+    timeLeft--
+  } else {
+    clearInterval(countdownInterval)
+  }
+}
 
 // 输入数字
 function changeInputNumbers(num) {
@@ -47,7 +70,7 @@ function isNumPicked(num) {
       </div>
       <div id="time-container">
         <p id="countdown-head" class="board-text">カウントダウン</p>
-        <p id="countdown-text">00:30</p>
+        <p id="countdown-text">{{ countDown }}</p>
       </div>
     </div>
     <div class="select-num">
