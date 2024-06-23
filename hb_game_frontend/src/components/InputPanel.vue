@@ -1,10 +1,12 @@
 <script setup>
 import { ref } from 'vue'
+import { postService } from '@/service/postService.js'
 const numbers = [...Array(10).keys()]
 const isSelectedDone = ref(false)
 const inputNumbers = ref([-1, -1, -1, -1])
 const emit = defineEmits(['decideInputNumbers'])
 
+// 输入数字
 function changeInputNumbers(num) {
   if (!this.isSelectedDone.value) {
     let index = inputNumbers.value.indexOf(-1)
@@ -12,14 +14,23 @@ function changeInputNumbers(num) {
     if (index === 3) isSelectedDone.value = true
   }
 }
+
+// 删除数字
 function deleteInputNumbers() {
   isSelectedDone.value = false
   let index = inputNumbers.value.indexOf(-1)
   if (index === -1) inputNumbers.value[3] = -1
   else inputNumbers.value[index - 1] = -1
 }
+
+// 决定数字
 function decideInputNumbers() {
   emit('decideInputNumbers', inputNumbers.value)
+  const data = {
+    createdBy: 'user1',
+    hitResultNum: inputNumbers.value.join('')
+  }
+  postService.postHitResult(data).then((response) => console.log(response.data))
   inputNumbers.value = [-1, -1, -1, -1]
   isSelectedDone.value = false
 }

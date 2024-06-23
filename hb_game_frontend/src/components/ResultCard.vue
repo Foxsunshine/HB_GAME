@@ -7,8 +7,8 @@ defineProps({
   }
 })
 
-function getMovie() {
-  getService.getMovie().then((response) => console.log(response.data))
+function getHitResult() {
+  getService.getHitResult().then((response) => console.log(response.data))
 }
 </script>
 
@@ -18,7 +18,9 @@ function getMovie() {
       <p id="icon" class="flex-container">🤡</p>
       <p class="name">ジャンチェン</p>
     </div>
-    <p id="num-card" class="flex-container" @click="getMovie">{{ result }}</p>
+    <p id="num-card" class="flex-container" @click="getHitResult">
+      {{ result }}
+    </p>
   </div>
 </template>
 

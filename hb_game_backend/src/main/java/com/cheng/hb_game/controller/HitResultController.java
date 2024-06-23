@@ -18,7 +18,7 @@ public class HitResultController {
     @Autowired
     private HitResultService hitResultService;
 
-    @GetMapping("/hitResult")
+    @GetMapping("/getHitResult")
     public HitResult getHitResult(@RequestParam String createdBy) {
         Optional<HitResult> hitResult = hitResultService.findByCreatedBy(createdBy);
         return hitResult.orElse(null);

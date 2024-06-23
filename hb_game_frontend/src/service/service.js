@@ -5,7 +5,8 @@ const serviceInstance = axios.create({
   timeout: 10000, // 请求超时设置
   headers: {
     'Content-Type': 'application/json'
-  }
+  },
+  withCredentials: true // 如果需要发送凭证信息，如Cookies
 })
 
 // 请求拦截器

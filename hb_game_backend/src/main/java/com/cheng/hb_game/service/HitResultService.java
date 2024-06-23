@@ -21,5 +21,6 @@ public class HitResultService {
         HitResult hitResult = new HitResult();
         hitResult.setCreatedBy(createdBy);
         hitResult.setResult(hitResultNum);
+        hitResultRepository.save(hitResult);
     }
 }

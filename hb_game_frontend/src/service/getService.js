@@ -1,10 +1,10 @@
 import { serviceInstance } from './service.js'
 
 export const getService = {
-  getMovie() {
-    return serviceInstance.get('/movie', {
+  getHitResult() {
+    return serviceInstance.get('/getHitResult', {
       params: {
-        title: 'Back to the Future'
+        createdBy: 'user1'
       }
     })
   }

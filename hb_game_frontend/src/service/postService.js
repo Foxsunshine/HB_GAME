@@ -1,7 +1,7 @@
 import { serviceInstance } from './service.js'
 
-export default {
-  postHitResult(json) {
-    return serviceInstance.post('/postHitResult' + json)
+export const postService = {
+  postHitResult(data) {
+    return serviceInstance.post('/postHitResult', data)
   }
 }
