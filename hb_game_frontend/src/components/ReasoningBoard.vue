@@ -118,6 +118,6 @@ td {
   left: 10%;
   bottom: -1px;
   height: 1px;
-  background-color: var(--vt-c-grey-soft); /* 不明显的线条颜色 */
+  background-color: var(--vt-c-grey-soft);
 }
 </style>

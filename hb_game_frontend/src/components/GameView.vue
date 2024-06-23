@@ -6,7 +6,7 @@ import ReasoningBoardB from './ReasoningBoard.vue'
 import InputPanel from './InputPanel.vue'
 import { ref, reactive, onMounted } from 'vue'
 
-const resultA = ref('1234')
+const resultA = ref('$$$$')
 const resultB = ref('')
 let count = ref(-1)
 const reasoningArr = reactive([
@@ -28,12 +28,12 @@ onMounted(() => {
 function generateUniqueFourDigitString() {
   let digits = []
   while (digits.length < 4) {
-    const digit = Math.floor(Math.random() * 10) // 生成 0 到 9 之间的随机整数
+    const digit = Math.floor(Math.random() * 10)
     if (!digits.includes(digit)) {
       digits.push(digit)
     }
   }
-  return digits.join('') // 将数组转换为字符串
+  return digits.join('')
 }
 
 async function decideInputNumbers(inputNumbers) {
@@ -92,11 +92,4 @@ async function decideInputNumbers(inputNumbers) {
 #nav {
   margin: 10px;
 }
-
-/* @media (min-width: 1024px) {
-  .gameBox h1,
-  .gameBox h3 {
-    text-align: left;
-  }
-} */
 </style>
