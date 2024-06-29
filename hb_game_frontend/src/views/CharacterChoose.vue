@@ -1,18 +1,19 @@
 <script setup>
 import { useRouter } from 'vue-router'
+import { useUserStore } from '@/stores/counter.js'
 const router = useRouter()
-const goToSinglePlay = () => {
+const updateUser = (name) => {
+  useUserStore.updateUser(name)
   router.push('/GameView')
-}
-const goToMultiPlay = () => {
-  router.push('/CharacterChoose')
 }
 </script>
 
 <template>
   <div class="flex-container">
-    <button @click="goToSinglePlay">Single Play</button>
-    <button @click="goToMultiPlay">Multi Play</button>
+    <button @click="updateUser(1)">User 1</button>
+    <button @click="updateUser(2)">User 2</button>
+    <button @click="updateUser(3)">User 3</button>
+    <button @click="updateUser(4)">User 4</button>
   </div>
 </template>
 
