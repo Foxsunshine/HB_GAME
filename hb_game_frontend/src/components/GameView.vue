@@ -6,6 +6,7 @@ import ReasoningBoardB from './ReasoningBoard.vue'
 import InputPanel from './InputPanel.vue'
 import { postService } from '@/service/postService.js'
 import { ref, reactive, onMounted } from 'vue'
+import { useUserStore } from '@/stores/counter.js'
 
 const resultA = ref('👻👻👻👻')
 const resultB = ref('')
@@ -23,26 +24,26 @@ const reasoningArr = reactive([
 ])
 
 onMounted(() => {
-  resultB.value = generateUniqueFourDigitString()
+  // resultB.value = generateUniqueFourDigitString()
 })
 
-function generateUniqueFourDigitString() {
-  let digits = []
-  while (digits.length < 4) {
-    const digit = Math.floor(Math.random() * 10)
-    if (!digits.includes(digit)) {
-      digits.push(digit)
-    }
-  }
-  return digits.join('')
-}
+// function generateUniqueFourDigitString() {
+//   let digits = []
+//   while (digits.length < 4) {
+//     const digit = Math.floor(Math.random() * 10)
+//     if (!digits.includes(digit)) {
+//       digits.push(digit)
+//     }
+//   }
+//   return digits.join('')
+// }
 
 async function decideInputNumbers(inputNumbers) {
   console.log(resultB.value)
   if (resultB.value === '') {
     resultB.value = inputNumbers.join('')
     const data = {
-      createdBy: 'user1',
+      createdBy: useUserStore.getters,
       hitResultNum: inputNumbers.join('')
     }
     postService

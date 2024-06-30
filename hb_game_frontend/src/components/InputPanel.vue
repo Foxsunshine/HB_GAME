@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted } from 'vue'
+
 const numbers = [...Array(10).keys()]
 const countDown = ref('01:30')
 let timeLeft = 90

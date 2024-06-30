@@ -1,10 +1,22 @@
 <script setup>
+import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { sendGuess, connect } from '@/service/websocket.js'
+
+onMounted(() => {
+  connect()
+})
 const router = useRouter()
 const goToSinglePlay = () => {
   router.push('/GameView')
 }
 const goToMultiPlay = () => {
+  const guess = {
+    playerId: 'user1',
+    guessedNumbers: [1, 2, 3, 4],
+    timestamp: new Date().toISOString()
+  }
+  sendGuess(guess)
   router.push('/CharacterChoose')
 }
 </script>
